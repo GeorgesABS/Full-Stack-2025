@@ -160,6 +160,15 @@ body {
 	}
 }
 
+@keyframes spin3D {
+	from {
+		transform: rotateX(0deg) rotateY(0deg);
+	}
+	to {
+		transform: rotateX(360deg) rotateY(360deg);
+	}
+}
+
 .fade-in {
 	animation: fadeIn 1s ease-out;
 }
@@ -198,12 +207,14 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	animation: float 3s ease-in-out infinite;
-	transition: all 0.3s ease;
+	transform-style: preserve-3d;
+	perspective: 1000px;
+	animation: spin3D 8s linear infinite;
+	transition: all 0.4s ease;
 }
 
 .floating-card:hover {
-	transform: scale(1.1) rotate(10deg);
+	transform: scale(1.1) rotateX(10deg) rotateY(10deg);
 	background: rgba(255, 255, 255, 0.2);
 }
 

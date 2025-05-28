@@ -188,7 +188,10 @@ class PortfolioManager {
 						holding.dateAdded
 					)}</small>
                 </td>
-                <td>${holding.amount.toFixed(8)}</td>
+                <td>$${holding.amount.toLocaleString("en-US", {
+					minimumFractionDigits: 2,
+					maximumFractionDigits: 2,
+				})}</td>
                 <td>$${holding.currentPrice.toLocaleString("en-US", {
 					minimumFractionDigits: 2,
 					maximumFractionDigits: 2,
