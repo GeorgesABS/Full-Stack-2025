@@ -1,0 +1,504 @@
+/* Custom CSS3 Styles for CryptoTracker */
+:root {
+	--primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	--secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+	--dark-gradient: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+	--crypto-blue: #3b82f6;
+	--crypto-purple: #020202;
+	--crypto-gold: #f59e0b;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	line-height: 1.6;
+	color: #333;
+}
+
+/* Overiding Choices JS CSS */
+.choices__inner {
+	border-radius: 0.375rem; /* Match Bootstrap's border-radius */
+	height: 100%;
+	padding-top: 0.375rem;
+	padding-bottom: 0.375rem;
+	min-height: 100%; /* Ensure same height as button */
+	white-space: nowrap; /* Prevent wrapping */
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.choices__input {
+	padding-top: 0.375rem;
+	padding-bottom: 0.375rem;
+}
+
+.choices__list--single {
+	padding-right: 2rem; /* Leave space for dropdown arrow */
+}
+
+.choices {
+	margin-bottom: inherit !important;
+	min-width: 265px !important;
+}
+
+/* Navigation Styles */
+.crypto-navbar {
+	background: var(--primary-gradient) !important;
+	backdrop-filter: blur(10px);
+	box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+	transition: all 0.3s ease;
+}
+
+.navbar-brand {
+	font-size: 1.5rem;
+	font-weight: 700;
+	transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover {
+	transform: scale(1.05);
+}
+
+.nav-link {
+	font-weight: 500;
+	transition: all 0.3s ease;
+	position: relative;
+}
+
+.nav-link:hover {
+	transform: translateY(-2px);
+}
+
+.nav-link.active::after {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 30px;
+	height: 2px;
+	background: #fff;
+	border-radius: 2px;
+}
+
+/* Hero Section */
+.hero-section {
+	background: var(--primary-gradient);
+	position: relative;
+	overflow: hidden;
+	padding-top: 80px;
+}
+
+.hero-section::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>')
+		repeat;
+	animation: float 20s linear infinite;
+}
+
+.gradient-text {
+	background: linear-gradient(45deg, #00d4ff, #ff00c7);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+}
+
+/* Animations */
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(30px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes float {
+	0% {
+		transform: translateY(0px);
+	}
+	50% {
+		transform: translateY(-20px);
+	}
+	100% {
+		transform: translateY(0px);
+	}
+}
+
+@keyframes pulse {
+	0% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1.05);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
+
+@keyframes slideInRight {
+	from {
+		opacity: 0;
+		transform: translateX(50px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes spin3D {
+	from {
+		transform: rotateX(0deg) rotateY(0deg);
+	}
+	to {
+		transform: rotateX(360deg) rotateY(360deg);
+	}
+}
+
+.fade-in {
+	animation: fadeIn 1s ease-out;
+}
+
+.fade-in-delay {
+	animation: fadeIn 1s ease-out 0.3s both;
+}
+
+.fade-in-delay-2 {
+	animation: fadeIn 1s ease-out 0.6s both;
+}
+
+.pulse-btn {
+	animation: pulse 2s infinite;
+	transition: all 0.3s ease;
+}
+
+.pulse-btn:hover {
+	animation: none;
+	transform: scale(1.1);
+}
+
+/* Hero Animation */
+.hero-animation {
+	position: relative;
+	height: 400px;
+}
+
+.floating-card {
+	position: absolute;
+	width: 80px;
+	height: 80px;
+	background: rgba(255, 255, 255, 0.1);
+	backdrop-filter: blur(10px);
+	border-radius: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transform-style: preserve-3d;
+	perspective: 1000px;
+	animation: spin3D 8s linear infinite;
+	transition: all 0.4s ease;
+}
+
+.floating-card:hover {
+	transform: scale(1.1) rotateX(10deg) rotateY(10deg);
+	background: rgba(255, 255, 255, 0.2);
+}
+
+.floating-card i {
+	font-size: 2rem;
+	color: #fff;
+}
+
+.floating-card:nth-child(1) {
+	top: 20%;
+	left: 20%;
+	animation-delay: 0s;
+}
+
+.floating-card:nth-child(2) {
+	top: 50%;
+	right: 20%;
+	animation-delay: 1s;
+}
+
+.floating-card:nth-child(3) {
+	bottom: 20%;
+	left: 50%;
+	animation-delay: 2s;
+}
+
+/* Card Styles */
+.hover-card {
+	transition: all 0.3s ease;
+	border: none;
+}
+
+.hover-card:hover {
+	transform: translateY(-10px);
+	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1) !important;
+}
+
+.crypto-card {
+	transition: all 0.3s ease;
+	border: none;
+	background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+}
+
+.crypto-card:hover {
+	transform: translateY(-5px) scale(1.02);
+	box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.feature-icon {
+	width: 60px;
+	height: 60px;
+	border-radius: 15px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.5rem;
+}
+
+/* Testimonial Cards */
+.testimonial-card {
+	transition: all 0.3s ease;
+	border: none;
+	background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+}
+
+.testimonial-card:hover {
+	transform: translateY(-10px);
+	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1) !important;
+}
+
+.testimonial-avatar {
+	width: 80px;
+	height: 80px;
+	object-fit: cover;
+	border: 3px solid #fff;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+	transition: all 0.3s ease;
+}
+
+.testimonial-card:hover .testimonial-avatar {
+	transform: scale(1.1);
+}
+
+/* Portfolio & Analytics Headers */
+.portfolio-header,
+.analytics-header {
+	background: var(--primary-gradient);
+	padding-top: 120px;
+	padding-bottom: 60px;
+}
+
+/* Stats Cards */
+.stats-card {
+	transition: all 0.3s ease;
+	border: none;
+}
+
+.stats-card:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1) !important;
+}
+
+.stats-icon {
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0 auto;
+	font-size: 1.5rem;
+	animation: pulse 2s infinite;
+}
+
+.insight-icon {
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0 auto;
+	font-size: 1.5rem;
+}
+
+/* Price Display */
+.price-positive {
+	color: #28a745 !important;
+}
+
+.price-negative {
+	color: #dc3545 !important;
+}
+
+.price-neutral {
+	color: #6c757d !important;
+}
+
+/* Button Styles */
+.btn {
+	border-radius: 10px;
+	font-weight: 500;
+	transition: all 0.3s ease;
+	border: none;
+}
+
+.btn-primary {
+	background: var(--crypto-blue);
+	box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
+}
+
+.btn-primary:hover {
+	background: #2563eb;
+	transform: translateY(-2px);
+	box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+}
+
+.btn-success {
+	background: #10b981;
+	box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
+}
+
+.btn-success:hover {
+	background: #059669;
+	transform: translateY(-2px);
+	box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+}
+
+/* Table Styles */
+.table {
+	border-radius: 10px;
+	overflow: hidden;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.table thead th {
+	background: var(--primary-gradient);
+	color: white;
+	border: none;
+	font-weight: 600;
+}
+
+.table tbody tr {
+	transition: all 0.3s ease;
+}
+
+.table tbody tr:hover {
+	background: rgba(59, 130, 246, 0.05);
+	transform: scale(1.01);
+}
+
+/* Form Styles */
+.form-control {
+	border-radius: 10px;
+	border: 2px solid #e9ecef;
+	padding: 12px 16px;
+	transition: all 0.3s ease;
+}
+
+.form-control:focus {
+	border-color: var(--crypto-blue);
+	box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.25);
+	transform: translateY(-2px);
+}
+
+/* Loading Animations */
+.spinner-border {
+	animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+	.hero-section {
+		padding-top: 100px;
+	}
+
+	.display-3 {
+		font-size: 2.5rem;
+	}
+
+	.floating-card {
+		width: 60px;
+		height: 60px;
+	}
+
+	.floating-card i {
+		font-size: 1.5rem;
+	}
+
+	.hero-animation {
+		height: 300px;
+	}
+}
+
+@media (max-width: 576px) {
+	.display-3 {
+		font-size: 2rem;
+	}
+
+	.btn-lg {
+		padding: 0.75rem 1.5rem;
+		font-size: 1rem;
+	}
+
+	.card-body {
+		padding: 1rem;
+	}
+}
+
+/* Scroll Animations */
+.scroll-animate {
+	opacity: 0;
+	transform: translateY(30px);
+	transition: all 0.6s ease;
+}
+
+.scroll-animate.animate {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--crypto-blue);
+	border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #2563eb;
+}
